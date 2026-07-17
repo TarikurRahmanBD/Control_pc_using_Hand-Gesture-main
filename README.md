@@ -1,21 +1,57 @@
-# Hand Gesture Control System V1
+# Control PC Using Hand Gestures (v3)
 
-A software-only solution to control your PC mouse using hand gestures via a webcam. Built with Python, OpenCV, and MediaPipe.
+A professional, software-only solution to control your PC mouse, scrolling, and system features using real-time hand gestures via a webcam. Built with Python, OpenCV, and MediaPipe, version 3 introduces a fully modular architecture with advanced physics-based smoothing, HUD overlay, and system automation.
 
-## Features (Version 2)
--   **Multi-Mode Interaction**:
-    -   **MOVE MODE**: Standard cursor control.
-    -   **SCROLL MODE**: Intuitive hand-movement scrolling.
-    -   **PAUSED MODE**: Safety state.
--   **Expanded Gestures**:
-    -   **Right Click**: Thumb + Middle Pinch.
-    -   **Left Click**: Thumb + Index Pinch.
--   **Advanced Safety**:
-    -   **Global Kill Switch ('Q')**.
-    -   **Auto-Pause**: Activates on hand loss or low FPS.
-    -   **Cooldowns**: Prevents accidental double-clicks.
--   **Visual Dashboard**:
-    -   Real-time Mode, FPS, and Gesture display.
+---
+
+## ✨ Features
+
+### 🎮 Multi-Mode Interaction & Controls
+- **MOVE MODE:** Smooth and precise standard cursor tracking.
+- **SCROLL MODE:** Intuitive hand-movement vertical scrolling.
+- **SYSTEM INTEGRATION:** Control OS-level functions like volume, brightness, and basic shortcuts.
+- **PAUSED MODE:** A safety state that halts pointer and system control instantly.
+
+### 🛡️ Safety & Reliability
+- **Global Kill Switch ('Q'):** Immediate, safe application shutdown.
+- **Auto-Pause:** Instantly triggers safety state on hand loss or low FPS.
+- **Smart Cooldowns & Intent Classification:** Prevents accidental double-clicks or erratic movements.
+
+### 🎨 User Interface & Physics
+- **Visual Dashboard (HUD):** On-screen real-time feedback showing current Mode, FPS, and detected gestures.
+- **Mouse Physics:** Features pointer inertia and acceleration for a natural desktop feel.
+- **Jitter Filtering:** Algorithmic smoothing to eliminate raw webcam hand-shake.
+
+---
+
+## 📂 Project Structure
+
+The project utilizes a clean, production-ready modular layout under the `gesture_v3` package:
+
+```text
+Control_pc_using_Hand-Gesture-main/
+├── gesture_v3/
+│   ├── control/
+│   │   └── mouse_physics.py      # Handles inertia, acceleration, and physical pointer behavior
+│   ├── core/
+│   │   └── system.py             # OS-level integrations (volume, brightness, shortcuts)
+│   ├── intent/
+│   │   └── classifier.py         # Translates hand landmarks into specific actions/gestures
+│   ├── perception/
+│   │   ├── smoothing.py          # Filters jitter and stabilizes cursor movement
+│   │   └── tracker.py            # Wraps MediaPipe Hand Landmarker API
+│   ├── ui/
+│   │   └── hud.py                # Heads-Up Display / On-screen overlay for user feedback
+│   └── config.py                 # Centralized configuration variables for v3
+├── config.py                     # Legacy/Global configuration
+├── gesture_recognition.py        # Core gesture inference logic
+├── hand_landmarker.task          # Pre-trained MediaPipe Landmarker model file
+├── hand_tracking.py              # Hand detection utility
+├── main_v3.py                    # Main entry point for version 3
+├── mouse_control.py              # Direct mouse interaction layer
+├── requirements.txt              # Project dependencies
+└── README.md                     # Project documentation
+```
 
 ## Prerequisites
 -   Python 3.8+
